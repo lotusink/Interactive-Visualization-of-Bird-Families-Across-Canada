@@ -1,4 +1,4 @@
-# ================== Single-month raster calculations =====================
+## ================== Single-month raster calculations =====================
 # Batch-generate monthly raster data for Canada
 generate_monthly_rasters <- function(
     dt_temp,
@@ -99,7 +99,7 @@ load_all_monthly_rasters <- function(
 }
 
 
-# ========================== Temperature raster calculations by season =======================
+## ========================== Temperature raster calculations by season =======================
 # Precompute seasonal temperature rasters
 precompute_seasonal_rasters <- function(
     raster_dir  = "raster_data",
@@ -169,8 +169,8 @@ precompute_seasonal_rasters <- function(
   
   cat("\rAll seasonal rasters precomputed in", out_dir, "\n")
 }
-# ==================== Aggregated data under Family and Genus =============
-# Precompute grid aggregations for multiple zoom levels
+## ==================== Aggregated data under Family and Genus =============
+# Pre-computed grid aggregations for multiple zoom levels
 precompute_grid_data <- function(
     dt_obsert,
     zoom_levels = 4:9,
@@ -229,7 +229,7 @@ precompute_grid_data <- function(
   invisible(results)
 }
 
-# Load precomputed grid data
+# Load pre-computed grid data
 load_precomputed_data <- function(
     output_dir = "precomputed_data",
     zoom_level = NULL
@@ -248,7 +248,7 @@ load_precomputed_data <- function(
   }
 }
 
-# Query precomputed grid data
+# Query pre-computed grid data
 query_grid_data <- function(
     precomputed_data,
     zoom_level,
@@ -318,7 +318,7 @@ query_grid_data <- function(
            c("lat", "lon", "top_taxonomy"))
   res
 }
-# ======== Get grid observations for plotting ====================
+## ======== Get grid observations for plotting ====================
 # Get grid observations for plotting
 get_grid_observations_for_plot <- function(
     clicked_coords, 
@@ -381,11 +381,11 @@ get_grid_observations_for_plot <- function(
   
   return(NULL)
 }
-# ================== Calculate opacity based on count and threshold ============
+## ================== Calculate opacity based on count and threshold ============
 calculate_opacity <- function(total_count, k) {
   ifelse(total_count >= k, 0.8, 0.4)
 }
-# ========== Show welcome dialog ==================================
+## ========== Show welcome dialog ==================================
 showWelcome <- function() {
   showModal(modalDialog(
     title = "Welcome to the Bird Grid Visualization App",
@@ -423,7 +423,7 @@ showWelcome <- function() {
     footer    = modalButton("Get Started")
   ))
 }
-# ================ Load seasonal temperature raster data ===========
+## ================ Load seasonal temperature raster data ===========
 load_seasonal_rasters <- function(input_dir = "precomputed_seasonal_rasters") {
   seasons <- c("spring", "summer", "autumn", "winter")
   raster_list <- list()
@@ -451,7 +451,7 @@ load_seasonal_rasters <- function(input_dir = "precomputed_seasonal_rasters") {
   cat("\rSuccessfully loaded", length(raster_list), "seasonal rasters\n")
   return(raster_list)
 }
-# ====== Calculate grid coordinates (align lat/lon to grid center based on distance) ====
+## ====== Calculate grid coordinates (align lat/lon to grid center based on distance) ====
 calculate_grid_coords <- function(lat, lon, distance) {
   list(
     grid_lat = floor(lat / distance + 0.5) * distance,
